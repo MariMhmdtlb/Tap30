@@ -6,7 +6,6 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    list-style: none;
 }
 
 
@@ -16,6 +15,7 @@
     --primary-color: #ff5722;
     --secondary-color: #fff6f2;
     --secondary-color-dark: #ffa589;
+    --secondary-color-medium: #ff7a50;
     --nav-color: #f8f8f8;
     --heading-color: #000;
     --text-color-ligth: #333333;
@@ -97,8 +97,9 @@ h2 {
     font-size: 1.2rem;
     text-transform: uppercase;
     border-radius: 32rem;
-    padding: 0.4rem 1.2rem;
+    padding: 0.3rem 1.2rem;
     border: 2px solid var(--primary-color);
+    background-color: var(--white-color);
     color: var(--primary-color);
 }
 
@@ -110,5 +111,94 @@ h2 {
 @media screen and (min-width: 1024px) {
     .badge {
         font-size: 1.4rem;
+    }
+}
+
+.list {
+    list-style: none;
+    font-size: 1.6rem;
+}
+
+.list--inline .list__item {
+    display: inline-block;
+    margin-left: 2rem;
+}
+
+.list--tick .list__item {
+    padding-right: 3rem;
+    margin-bottom: 3rem;
+    background-image: url("./../assets/images/Tick-Square.svg");
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+@media screen and (min-width: 1024px) {
+    .list {
+        font-size: 1.8rem;
+    }
+}
+
+.plan-container {
+    padding-top: 10rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc((100% - (31.1rem * 3)) / 2);
+}
+
+.card {
+    position: relative;
+    height: 61.9rem;
+    width: 31.1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    background-color: var(--secondary-color);
+    /* box-shadow: 5px 5px 15px var(--text-color-ligth); */
+}
+
+.card--primary {
+    top: -6rem;
+}
+
+.card__heading {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 18.4rem;
+    color: var(--white-color);
+    padding: 2rem 2rem 1rem;
+    font-size: 1.4rem;
+}
+
+.card--secondary .card__heading {
+    background-color: var(--secondary-color-dark);
+}
+
+.card--primary .card__heading {
+    background-color: var(--secondary-color-medium);
+}
+
+.card__heading-entry {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card__heading-price span {
+    font-size: 3rem;
+}
+
+.card__body {
+    height: 43.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 3.5rem 2rem 5.6rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .plan-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card__heading {
+        font-size: 1.6rem;
     }
 }
