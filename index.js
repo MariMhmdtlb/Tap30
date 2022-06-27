@@ -10,7 +10,7 @@ class Cards {
 }
 class UI {
     displayCard(cards) {
-        const allCards = document.querySelectorAll(".card");
+
         console.log(allCards);
         let result = "";
         let primaryCard;
