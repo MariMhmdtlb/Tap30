@@ -99,13 +99,16 @@ h2 {
     border-radius: 32rem;
     padding: 0.3rem 1.2rem;
     border: 2px solid var(--primary-color);
-    background-color: var(--white-color);
-    color: var(--primary-color);
+}
+
+.badge--primary {
+    color: var(--white-color);
+    background-color: var(--primary-color);
 }
 
 .badge--secondary {
-    color: var(--white-color);
-    background-color: var(--primary-color);
+    background-color: var(--white-color);
+    color: var(--primary-color);
 }
 
 @media screen and (min-width: 1024px) {
@@ -138,7 +141,7 @@ h2 {
     }
 }
 
-.plan-container {
+.card-container {
     padding-top: 10rem;
     display: grid;
     grid-template-columns: 1fr;
@@ -195,10 +198,14 @@ h2 {
 }
 
 @media screen and (min-width: 1024px) {
-    .plan-container {
+    .card-container {
         grid-template-columns: repeat(3, 1fr);
     }
     .card__heading {
         font-size: 1.6rem;
     }
+}
+
+.featured-item {
+    display: grid;
 }
