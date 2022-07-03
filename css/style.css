@@ -60,9 +60,10 @@ h2 {
 }
 
 .btn {
+    display: inline-block;
     outline: 0;
     border: 0;
-    padding: 2.4rem 1.6rem;
+    padding: 2.1rem 3rem;
     border-radius: 1rem;
     cursor: pointer;
     white-space: nowrap;
@@ -142,10 +143,11 @@ h2 {
 }
 
 .card-container {
-    padding-top: 10rem;
+    padding-top: 2rem;
     display: grid;
     grid-template-columns: 1fr;
-    gap: calc((100% - (31.1rem * 3)) / 2);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5rem;
 }
 
 .card {
@@ -159,7 +161,7 @@ h2 {
 }
 
 .card--primary {
-    top: -6rem;
+    top: 0;
 }
 
 .card__heading {
@@ -199,13 +201,61 @@ h2 {
 
 @media screen and (min-width: 1024px) {
     .card-container {
+        padding-top: 10rem;
         grid-template-columns: repeat(3, 1fr);
+        gap: calc((100% - (31.1rem * 3)) / 2);
+    }
+    .card--primary {
+        top: -6rem;
     }
     .card__heading {
         font-size: 1.6rem;
     }
 }
 
+.featured-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 6rem;
+}
+
 .featured-item {
     display: grid;
+    grid-template-areas: "img" "text";
+    row-gap: 3rem;
+}
+
+.featured-item__img {
+    grid-area: img;
+    width: 95%;
+    justify-self: center;
+    object-fit: cover;
+}
+
+.featured-item__text {
+    grid-area: text;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .featured-item {
+        display: grid;
+        grid-template-columns: 4fr 3fr;
+        grid-template-areas: "text img";
+        column-gap: 3.5rem;
+    }
+    .featured-item:last-child {
+        grid-template-columns: 3fr 4fr;
+        grid-template-areas: "img text ";
+    }
+    .featured-item__img {
+        width: 100%;
+    }
+    .featured-item__text {
+        height: 100%;
+        justify-content: center;
+    }
 }
