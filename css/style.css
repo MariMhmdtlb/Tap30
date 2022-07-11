@@ -32,13 +32,15 @@ body {
     width: 100vw;
     color: var(--body-color);
     font-size: 1.4rem;
+    overflow-x: hidden;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h6 {
     color: var(--heading-color);
-    font-weight: 700;
+    font-weight: 400;
 }
 
 h1 {
@@ -61,6 +63,7 @@ ul {
 a {
     cursor: pointer;
     text-decoration: none;
+    color: var(--heading-color);
 }
 
 @media screen and (min-width: 1024px) {
@@ -76,7 +79,7 @@ a {
 }
 
 .container {
-    padding: 5% 10%;
+    padding: 0 10%;
 }
 
 .copy-right {
@@ -100,7 +103,7 @@ a {
     display: inline-block;
     outline: 0;
     border: 0;
-    padding: 2.1rem 3rem;
+    padding: 1.4rem;
     border-radius: 1rem;
     cursor: pointer;
     white-space: nowrap;
@@ -141,7 +144,7 @@ a {
 @media screen and (min-width: 1024px) {
     .btn {
         font-size: 1.6rem;
-        padding: 1rem 2.4rem;
+        padding: 1.6rem;
     }
     .btn-block {
         font-size: 2rem;
@@ -316,17 +319,29 @@ a {
 }
 
 .service-section {
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.5rem;
 }
 
 .service-icon__list {
-    width: 71rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    white-space: nowrap;
     height: 9rem;
 }
 
+@media screen and (max-width: 700px) {
+    .service-icon__list {
+        overflow-x: scroll;
+    }
+}
+
 .service-icon__item {
-    width: 7rem;
-    display: inline-flex;
+    height: 7rem;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
@@ -334,12 +349,8 @@ a {
     cursor: pointer;
 }
 
-.service-icon__item:not(:last-child) {
-    margin-left: 2rem;
-}
-
 .service-icon__img {
-    width: 100%;
+    width: 7rem;
     object-fit: cover;
 }
 
@@ -350,8 +361,12 @@ a {
     gap: 3rem;
 }
 
-.service-discription__text p {
+.service-description__text p {
     margin-top: 3rem;
+}
+
+.service-description__img {
+    display: none;
 }
 
 @media screen and (min-width: 1024px) {
@@ -365,60 +380,137 @@ a {
 }
 
 nav {
+    background-color: var(--nav-color);
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.navigation__container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
     height: 5rem;
     background-color: var(--nav-color);
 }
 
-.tap30-logo {
-    height: 2.1rem;
+.navigation__logo {
+    height: 100%;
 }
 
-.navigation__logo {
-    width: 10%;
+.tap30-logo {
+    width: 9.7rem;
+    height: 5rem;
+}
+
+.navigation__container a {
+    font-size: 1.4rem;
 }
 
 .navigation__link {
-    width: 50%;
-    display: flex;
+    width: 100%;
+    height: 60vh;
+    display: none;
+    position: relative;
+    background-color: var(--white-color);
+    opacity: 0;
 }
 
 .navigation__link-list {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    width: calc(100% - 12.5rem);
+    width: 100%;
+    height: 60vh;
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    background-color: var(--white-color);
 }
 
-.navigation__btn {
+.navigation__link-btn {
+    display: none;
     width: 12.5rem;
 }
 
-.navigation__toggle {
-    position: relative;
+.navigation__link-btn .btn {
+    padding: 0.7rem 4rem;
 }
 
-.navigation__toggle::before,
-.navigation__toggle::after,
+.navigation__link-btn a {
+    color: var(--white-color);
+}
+
 .navigation__toggle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(50%);
+    width: 2.5rem;
+    height: 2.3rem;
+}
+
+.navigation__toggle .bar3,
+.navigation__toggle .bar1,
+.navigation__toggle .bar2 {
+    position: absolute;
+    left: 7vw;
     width: 2.5rem;
     height: 3px;
-    background-color: #000;
+    background-color: var(--heading-color);
 }
 
-.navigation__toggle::before,
-.navigation__toggle::after {
-    content: "";
-    position: absolute;
+.navigation__toggle .bar1 {
+    top: 0;
 }
 
-.navigation__toggle::before {
+.navigation__toggle .bar2 {
     top: 1rem;
 }
 
-.navigation__toggle::after {
-    bottom: 1rem;
+.navigation__toggle .bar3 {
+    top: 2rem;
+}
+
+nav.change .navigation__link {
+    opacity: 1;
+    display: flex;
+}
+
+nav.change .navigation__toggle .bar1 {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+nav.change .navigation__toggle .bar2 {
+    opacity: 0;
+}
+
+nav.change .navigation__toggle .bar3 {
+    transform: rotate(-45deg) translate(6px, -6px);
+    transform-origin: 1rem 0;
+}
+
+@media screen and (min-width: 1024px) {
+    .navigation__toggle {
+        display: none;
+    }
+    .navigation__link {
+        height: 5rem;
+        opacity: 1;
+        display: flex;
+        background-color: transparent;
+        max-width: 90rem;
+    }
+    .navigation__container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .navigation__link-list {
+        flex-direction: row;
+        align-items: center;
+    }
+    .navigation__link-btn {
+        display: block;
+    }
 }
 
 header {
@@ -436,30 +528,59 @@ header {
     background-image: linear-gradient( 51deg, rgba(23, 26, 60, 0.7) 5%, rgba(23, 26, 60, 0.3) 95%);
     border-radius: 2rem;
     position: absolute;
-    bottom: 0;
-    right: 0;
-    transform: translate(-40%, -10%);
+    bottom: 5rem;
+    right: 10%;
 }
 
 .header-content h1,
-h2 {
+.header-content h2 {
     color: var(--white-color);
 }
 
-.buttons-box {
+.header-content h2 {
+    font-size: 1.6rem;
+    margin-bottom: 3rem;
+}
+
+.header-content__buttons {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
 }
 
-.buttons-box .btn i {
+.header-content__buttons .btn i {
     padding-left: 1rem;
+}
+
+.header-content__phone-benner {
+    width: 30%;
+    position: absolute;
+    left: 10%;
+    bottom: -32rem;
+    display: none;
 }
 
 @media screen and (min-width: 1024px) {
     header {
         height: 54rem;
+        margin-bottom: 22rem;
+    }
+    .header-content {
+        width: 50rem;
+    }
+    .header-content h2 {
+        font-size: 2.4rem;
+    }
+    .header-content__buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .header-content__buttons .btn {
+        width: 48%;
+    }
+    .header-content__phone-benner {
+        display: block;
     }
 }
 
@@ -470,6 +591,7 @@ footer {
     gap: 1.5rem;
     background-color: var(--heading-color);
     color: var(--white-color);
+    padding: 5% 10% !important;
 }
 
 footer>* {
@@ -492,6 +614,7 @@ footer h3 {
 footer h6 {
     font-size: 2rem;
     margin-bottom: 1rem;
+    color: inherit;
 }
 
 .footer__link-col {

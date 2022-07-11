@@ -41,7 +41,7 @@ class UI {
                         return item;
                 })[0];
 
-                let description = `<div class="service-discription__text">
+                let description = `<div class="service-description__text">
                 <h3>${intendentData.title}</h3>
                 <p>${intendentData.description}</p>
             </div>
