@@ -1,4 +1,4 @@
-import { cardData } from "./cardData";
+import { cardData } from "./cardData.js";
 
 const cardContainer = document.querySelector(".card-container");
 
@@ -42,7 +42,6 @@ class UI {
         primaryCard = allCards[1];
 
         makeCardPrimary(primaryCard);
-        console.log(primaryCard);
         makeCardSecondary(primaryCard);
 
         function makeCardSecondary(primaryCard) {
